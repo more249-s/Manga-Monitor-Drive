@@ -1,0 +1,111 @@
+PAYMENT							
+			How Many Chapters Have You Worked On   				
+Series Name			Chapters	The Chapters are	rate	USD($)	
+EXAMPLE			5		1	5	
+Above ten thousand people					0.5	0	
+						0	
+Wu Dong Qian Kun					0.5	0	
+Martial peak					0.7	0	
+Ranker’S Return					0.5	0	
+Trash Of The Count’s Family					0.5	0	
+Worn and torn newbie					0.5	0	
+The Demonic Cult Leader is too Reluctant					0.5	0	
+The Eternal Supreme					0.9	0	
+The Board Of Lanke					0.5	0	
+The 31st Piece Turns the Tables					0.7	0	
+Clever Cleaning Life Of The Returned Genius Hunter					0.5	0	
+Transcension Academy					0.6	0	
+The Knight King Who Returned with a God					0.5	0	
+The Priest Of Corruption					0.5	0	
+The Emperor's Sword					0.5	0	
+Steel eating player					0.5	0	
+How to Live as a Tyrant's Spoiled Brat						0	
+Surviving the apocalypse					0.5	0	
+Subscribing To The Transcendent's Channel					0.7	0	
+I Was Immediately Mistaken for a Monster Genius Actor					1.5	0	
+Reincarnated as a Genius Prodigy of a Prestigious Family					0.6	0	
+All my alter egos are tycoons					0.8	0	
+The Delusional Hunter in Another World					0.8	0	
+Entomologist in sichuan tang clan					0.9	0	
+The Ultimate Shut-In					1.5	0	
+Becoming a legendary ace employee					0.7	0	
+I’m Being Misunderstood As A Soccer Genius					1.2	0	
+The Game That I Came From					0.5	0	
+Lord of the Mysteries					0.5	0	
+Regressed Genius Creates Mythic Items					0.6	0	
+All Soccer Talents Are Mine					0.5	0	
+Mount Hua Sect's Genius Phantom Swordsman					0.7	0	
+Paranoid mage						0	
+Disciple of the Three Kings					0.5	0	
+How to Retire as a Disaster Necromancer						0	
+Becoming a Legend, Starting as a Water Monkey					0.5	0	
+Genius Artist's Random Studio					0.5	0	
+Artifact-Devouring Player					0.5	0	
+The Villain Wants to Live					1	0	
+The Illegitimate Who Devours Weapons					1	0	
+The Magic Tower's Problem Child					0.7	0	
+I Became the Genius Bastard of a Noble Dark Clan					0.6	0	
+Winterbell					0.5	0	
+Emperor of Solo Play					0.5	0	
+My Wife is the Demonic Cult Leader					0.5	0	
+Reborn as a Demonic Cultivator: Starting with a Zombie Planet						0	
+I Took Over the Academy With a Single Sashimi Knife					1.3	0	
+The Youngest Son of the Eunhae Merchant Group					0.5	0	
+The Dark Swordsman Returns					0.8	0	
+Unrivaled Spear Demon					2	0	
+The Top Ranker's Aspiring Writer Life Manual					0.5	0	
+A Cadet Becomes A Prophet?!					0.6	0	
+The Demonic Cult Instructor Returns					0.5	0	
+Turn-based wizard					0.5	0	
+Zombie papa					0.5	0	
+A Mountain of Corpses, A Sea of Blood					0.5	0	
+"Chronicle of Runes		"					0.6	0	
+Hiding a warehouse in the apocalypse					1	0	
+Did Someone Force You to Become the Heavenly Demon?					0.6	0	
+Monopolizing Fortunes					1.1	0	
+The Rebellious Apostle of the Harvest Goddess					0.5	0	
+Return of the First Generation: The Strongest in History Reincarnates as His Descendant 1000 Years					1.1	0	
+Rebirth of the Divine Demon					0.8	0	
+44th Period: Survival Class					0.5	0	
+I Shall Seal The Heavens 2025					0.8	0	
+Impure Blood Regression					0.5	0	
+The Vehement Emperor Of Steel					1.2	0	
+Sword Chronicles of Gaining Divine Powers						0	
+Apocalypse Veteran						0	
+The Killer Lawyer						0	
+The Regressed Extra Becomes a Genius					0.7	0	
+Reincarnated as the Archduke’s Son					1	0	
+Solo Leveling:ARISE					0.5	0	
+Kidnapped Dragons					1	0	
+Eater of All					0.9	0	
+Legend of Star General					0.4	0	
+Fantasy Induction Corps						0	
+Absolute Domination at Level 0 Using My Analysis Skill					0.8	0	
+The Top Healer of the Offensive Magic Academy						0	
+Debtbound by Blood						0	
+Murim Psychopath					0.9	0	
+The Almighty Trap Master						0	
+Reincarnation of Martial God					0.5	0	
+The Prosecutor: Kim Seo-jin					0.6	0	
+The Black-Haired Knight King					0.5	0	
+The Game Architect Of The Abyss					0.5	0	
+The 18-Year-Old Demon King					0.6	0	
+The Postman of the Apocalypse					0.5	0	
+The Black-Haired U.S. Army General					0.7	0	
+Rural Ace					0.5	0	
+A Glimpse of the Jianghu					0.5	0	
+Assassin X Dragon					0.5	0	
+Return from Ailao Mountain — Bureau 749 in Shock					0.5	0	
+The Player Hides His Past					0.5	0	
+Return to Player					0.5	0	
+The Terminally Ill Young Master of the Baek Clan					0.5	0	
+How to live as a Villain					0.5	0	
+The Academy’s Genius Tamer					0.5	0	
+The Hero Directed by The Demon King					0.5	0	
+Resurrection Boy					0.5	0	
+"My School Life Pretending To Be a Worthless Person 		"					0.5	0	
+Manager Kim					0.5	0	
+Light Of The Dawn (Remake)					0.5	0	
+Demonic Beast Hunter Survival Guide					0.5	0	
+The Martial World's Undead Apocalypse					0.5	0	
+Genius Prismatic Mage					0.5	0	

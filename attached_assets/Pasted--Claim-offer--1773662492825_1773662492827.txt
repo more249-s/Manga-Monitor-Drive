@@ -1,0 +1,2479 @@
+
+
+
+Claim offer
+
+هلو  عايزك تعملي برونت بي ادق التفاصيل لل زكاء الاصتناعي انه  يعمل بوت دسكورد لي اداره  الفريق كامل لي ترجمه و تحرير المانهوا 
+يكون في البوت 
+برو  فايل لي كل عضو يكون فيه ايش هو شغله و عدد الفصول الي عملهم في المجمل و في الشهر 
+الاعمال الي ماسكها العضو وكل شي كهون خلف واجه جميله  و يكون في الفلوس الي حياخدها العضو و طريقه الدفع 
+عايز البوت يقدر يعرف وقت الفصول توصل  من الموقه الرءيسي زي نيرفان او نيوتوكي او مواقه نانيا زي فورتكس او اشورا  و يرسل في روم العمل اشعار لل قايمين بي العمل انن الفصل نزل و يرسل لنك الفصل الراو و لو ممكن انه يسحب  الفصل و يحطه و حطه في الدرايف لو الفصل مجاني و لو لا بس يقوم يدي اللنك   حق الفصل 
+عايز نظام تتبع الفصول في الراو يكون حقيقي و يشتغل فعلا 
+لا تبدا في البرونت لسا اديني افكارك و لما اكون جاهز للبرونت حقلك تمتم
+
+فكرتك ممتازة جدًا 👌 وبصراحة ممكن تعمل بوت احترافي لإدارة فريق ترجمة المانهوا بالكامل. قبل ما نكتب البرومبت النهائي، خلينا نبني تصور كامل للنظام عشان لما نطلب من الذكاء الاصطناعي يصنعه يطلع بوت قوي فعلاً. 🚀
+
+سأقسم الأفكار إلى أنظمة داخل البوت.
+
+🧠 الفكرة العامة للبوت
+البوت يكون نظام إدارة استوديو ترجمة مانهوات داخل Discord.
+
+يعني بدل ما الفريق يعتمد على:
+
+جداول
+
+رسائل
+
+Google Sheets
+
+تذكير يدوي
+
+كل شيء يصير مؤتمت داخل Discord.
+
+1️⃣ نظام البروفايل للأعضاء
+كل عضو في الفريق يكون له Profile داخل البوت.
+
+المعلومات داخل البروفايل
+الاسم
+
+ID الديسكورد
+
+الرتبة
+
+الدور في الفريق
+
+مثلاً:
+
+مترجم
+
+مبيض
+
+تايبستر
+
+مدقق
+
+ريدر
+
+كواليتي
+
+مصمم
+
+إحصائيات العضو
+عدد الفصول الكلي
+
+عدد الفصول هذا الشهر
+
+عدد الصفحات
+
+الأعمال الحالية
+
+مثال أمر
+/profile @user
+يرجع Embed جميل:
+
+👤 Name: Ahmed
+🎭 Role: Translator
+📚 Total Chapters: 120
+📅 This Month: 9
+📖 Current Projects:
+- Solo Leveling
+- Nano Machine
+2️⃣ نظام المشاريع (المانهوات)
+البوت يدير الأعمال بالكامل.
+
+كل عمل يكون له:
+
+اسم العمل
+الموقع
+الفريق المسؤول
+الفصل الحالي
+حالة العمل
+مثال:
+
+Nano Machine
+Chapter: 192
+Translator: Ahmed
+Cleaner: Ali
+Typesetter: Omar
+Status: Translating
+3️⃣ نظام المهام (Workflow)
+هذا أهم شيء.
+
+الفصل يمر بمراحل:
+
+RAW
+↓
+Translation
+↓
+Cleaning
+↓
+Typesetting
+↓
+Proofreading
+↓
+Quality Check
+↓
+Release
+البوت يتابع المرحلة تلقائيًا.
+
+مثلاً:
+
+/chapter start nano-machine 193
+ينشئ:
+
+Thread أو Channel للفصل.
+
+4️⃣ نظام اكتشاف الفصول الجديدة
+واحدة من أصعب الأشياء 🔥
+
+البوت يراقب مواقع مثل:
+
+NewToki
+
+Nirvana Scans
+
+Asura Scans
+
+Vortex Scans
+
+كيف يعمل
+البوت يسوي:
+
+Web Scraping
+RSS
+API
+كل 5 دقائق.
+
+لو نزل فصل جديد:
+
+يرسل:
+
+🚨 Chapter 193 is out!
+
+Title: Nano Machine
+Source: NewToki
+
+RAW:
+link
+ويرسل إشعار للطاقم.
+
+5️⃣ نظام جلب الراو تلقائي
+لو الفصل مجاني:
+
+البوت يقدر:
+
+يحمل الصور
+
+يرفعها
+
+إلى:
+
+Google Drive
+
+Mega
+
+Discord thread
+
+لو الفصل مدفوع:
+
+يرسل الرابط فقط.
+
+6️⃣ نظام تتبع العمل
+البوت يسجل:
+
+من يعمل على الفصل.
+
+مثلاً:
+
+Translator: working
+Cleaner: waiting
+Typesetter: waiting
+وكل ما يخلص عضو:
+
+/chapter done
+ينتقل للمرحلة التالية.
+
+7️⃣ نظام الرواتب 💰
+ميزة قوية جدًا.
+
+كل عضو له:
+
+rate per chapter
+مثلاً:
+
+Translator = $6
+Cleaner = $4
+Typesetter = $5
+البوت يحسب تلقائيًا.
+
+مثال
+/salary @Ahmed
+يرجع:
+
+This Month:
+
+Nano Machine: 4 chapters
+Solo Leveling: 2 chapters
+
+Total: $36
+8️⃣ نظام الدفع
+البوت يسجل:
+
+طريقة الدفع:
+
+PayPal
+Crypto
+Bank
+ويسجل حالة الدفع.
+
+Paid
+Pending
+9️⃣ لوحة إحصائيات
+البوت يرسل لوحة مثل:
+
+📊 Team Stats
+
+Chapters This Month: 43
+Active Projects: 12
+Members Active: 17
+🔟 لوحة إدارة
+الأدمن يقدر:
+
+إضافة عضو
+
+/member add
+إضافة عمل
+
+/project add
+تعيين طاقم
+
+/assign
+🔥 أفكار احترافية إضافية
+لو ضفناها البوت يصير وحش حقيقي.
+
+1️⃣ AI ترجمة أولية
+يجيب النص من الصور.
+
+باستخدام OCR.
+
+مثل:
+
+MangaOCR
+
+Tesseract
+
+2️⃣ كشف الفقاعات تلقائي
+باستخدام:
+
+MangaTextDetection
+
+3️⃣ لوحة ويب
+بدل الديسكورد فقط.
+
+يكون:
+
+Dashboard
+مثل Trello.
+
+4️⃣ نظام Anti-Leak
+لو حد سرب الفصل.
+
+البوت يعرف.
+
+5️⃣ نظام تقدم الفصل
+Chapter 193
+
+Translation 100%
+Cleaning 40%
+Typesetting 0%
+⚙️ التقنيات التي أنصح بها
+لو البوت احترافي:
+
+Backend
+Node.js
+discord.js
+Database
+PostgreSQL
+Scraping
+Puppeteer
+Cheerio
+Hosting
+Railway
+VPS
+💡 أهم مشكلة لازم نحلها
+المواقع مثل:
+
+NewToki
+
+تغير التصميم كثير.
+
+لذلك لازم:
+
+Flexible scraper
+🔥 سؤال مهم قبل ما نكتب البرومبت
+عشان أكتب أقوى برومبت ممكن.
+
+جاوبني:
+
+1️⃣ هل البوت خاص بسيرفرك ولا تنوي تنشره؟
+
+2️⃣ هل تريده:
+
+بسيط
+
+أو نظام احترافي ضخم؟
+
+3️⃣ هل تريد معه موقع ويب Dashboard؟
+
+4️⃣ هل تريد AI OCR + ترجمة داخل البوت؟
+
+5️⃣ هل الفريق عندكم كم عضو تقريبًا؟
+
+لو حبيت، أقدر أيضًا أعطيك أفكار مجنونة مثل:
+
+بوت يدير الاستوديو بالكامل مثل شركة ترجمة حقيقية
+
+AI يترجم الفصل تلقائيًا ويقسمه على الفريق
+
+ولو قلت تمتم
+سأكتب لك أقوى برومبت في العالم لبناء هذا البوت 🤖🔥
+(حرفيًا برومبت ممكن يطلع مشروع كامل جاهز).
+
+
+البوت لي سيرفري تيم اكس ابيه شي احترافي جدا جدا جدا 
+لا تبدا لسه 
+
+تمام 👍 بما إن البوت سيكون لسيرفرك الخاص (Team X) وتريده احترافي جدًا جدًا، خلينا نرفع الفكرة لمستوى أعلى بحيث يكون أقرب إلى نظام إدارة استوديو ترجمة كامل وليس مجرد بوت ديسكورد. سأعطيك أفكار متقدمة قبل كتابة البرومبت. 🚀
+
+🧠 الهيكل الحقيقي للبوت
+الأفضل أن البوت يكون 3 أجزاء وليس بوت فقط:
+
+1️⃣ Discord Bot
+إدارة الفريق والأوامر.
+
+2️⃣ Backend Server
+يعالج البيانات ويعمل scraping للمواقع.
+
+3️⃣ Database
+يحفظ كل المعلومات.
+
+ويمكن إضافة:
+
+4️⃣ Dashboard Web Panel
+لوحة تحكم احترافية.
+
+👥 نظام إدارة الأعضاء (Pro Member System)
+لكل عضو ملف كامل داخل البوت.
+
+معلومات العضو
+Discord ID
+
+الاسم
+
+الرتبة
+
+الدور
+
+مثال الأدوار:
+
+Translator
+Cleaner
+Redrawer
+Typesetter
+Proofreader
+QC
+Uploader
+Designer
+الإحصائيات
+الفصول الكلية
+
+فصول الشهر
+
+الصفحات
+
+المشاريع الحالية
+
+متوسط وقت إنجاز الفصل
+
+مثال البروفايل
+👤 Ahmed
+Role: Translator
+
+Total Chapters: 183
+This Month: 12
+Projects:
+• Nano Machine
+• Revenge of the Iron-Blooded Sword Hound
+
+Salary Rate: $6 / chapter
+Total Earned: $320
+📚 نظام المشاريع (Project System)
+كل مانهوه تعتبر مشروع داخل البوت.
+
+المشروع يحتوي:
+
+title
+source site
+current raw chapter
+team members
+status
+release schedule
+مثال:
+
+Nano Machine
+
+Source: Asura
+Current RAW: 213
+Current Working: 212
+
+Translator: Ahmed
+Cleaner: Ali
+Typesetter: Omar
+QC: Sara
+⚙️ نظام Workflow احترافي
+الفصل يمر بالمراحل:
+
+RAW
+↓
+Translation
+↓
+Cleaning
+↓
+Redrawing
+↓
+Typesetting
+↓
+Proofreading
+↓
+Quality Check
+↓
+Release
+البوت يتابع كل مرحلة.
+
+مثلاً:
+
+/chapter start nano-machine 214
+ينشئ:
+
+Thread للفصل.
+
+📡 نظام اكتشاف الفصول الجديدة
+البوت يراقب مواقع مثل:
+
+NewToki
+
+Asura Scans
+
+Vortex Scans
+
+Nirvana Scans
+
+كل:
+
+3 - 5 دقائق
+عند نزول فصل
+يرسل:
+
+🚨 New Chapter Detected
+
+Nano Machine
+Chapter 214
+
+Source:
+NewToki
+
+RAW:
+link
+ويمنشن الفريق المسؤول.
+
+📥 نظام تحميل الراو تلقائي
+لو الفصل مجاني:
+
+البوت يقوم بـ:
+
+1️⃣ تحميل الصور
+2️⃣ ضغطها
+3️⃣ رفعها إلى:
+
+Google Drive
+ويرسل الرابط.
+
+لو الفصل مدفوع:
+
+يرسل الرابط فقط.
+
+📊 نظام التقدم
+مثال:
+
+Chapter 214
+
+Translation ██████████ 100%
+Cleaning ████░░░░░░ 40%
+Typesetting ░░░░░░░░░░ 0%
+QC ░░░░░░░░░░
+💰 نظام الرواتب المتقدم
+كل عضو له:
+
+rate per chapter
+rate per page
+bonus
+مثال:
+
+Translator = $7
+Cleaner = $4
+Typesetter = $5
+QC = $3
+البوت يحسب تلقائيًا.
+
+/salary @Ahmed
+Month: March
+
+Nano Machine: 4 chapters
+Iron Blooded: 3 chapters
+
+Total: $49
+💳 نظام الدفع
+البوت يسجل:
+
+PayPal
+USDT
+Bank Transfer
+ويحفظ:
+
+Paid
+Pending
+📂 نظام الملفات
+لكل فصل:
+
+RAW
+PSD
+FINAL
+يرتبط بـ:
+
+Google Drive
+📈 لوحة الإحصائيات
+📊 Team X Stats
+
+Chapters This Month: 58
+Active Projects: 11
+Members Active: 16
+Average Release Time: 9 hours
+🧠 ميزات ذكية إضافية
+1️⃣ OCR تلقائي
+باستخدام:
+
+MangaOCR
+
+Tesseract
+
+2️⃣ اكتشاف الفقاعات
+باستخدام:
+
+MangaTextDetection
+
+3️⃣ منع تسريب الفصول
+Watermark خفي.
+
+4️⃣ Auto Ping
+لو العضو تأخر:
+
+⚠ Translator has not started chapter 214
+🧰 التقنيات التي أنصح بها
+Bot
+Node.js
+discord.js v14
+Database
+PostgreSQL
+Scraping
+Puppeteer
+Cheerio
+Queue
+Redis
+🖥️ فكرة قوية جدًا (لو حبيت)
+نعمل لوحة تحكم للمشروع مثل Trello.
+
+يعني:
+
+kanban board
+Translation → Cleaning → Typesetting
+
+🔥 فكرة مجنونة ممكن تضيفها
+AI يقترح:
+
+أفضل مترجم
+أفضل مبيض
+حسب النشاط.
+
+❗ أهم مشكلة يجب حلها
+مواقع مثل:
+
+NewToki
+
+تحجب السكربتات أحيانًا.
+
+الحل:
+
+headless browser
+قبل كتابة البرومبت النهائي عندي 6 أسئلة مهمة
+جاوبهم عشان أكتب برومبت خارق:
+
+1️⃣ هل تريد البوت عربي أم إنجليزي؟
+
+2️⃣ هل تريد Dashboard موقع ويب؟
+
+3️⃣ هل تريد تحميل الراو تلقائي فعلًا؟
+
+4️⃣ هل تريد AI OCR داخل البوت؟
+
+5️⃣ هل تريد نظام إصدار Release تلقائي؟
+
+6️⃣ هل الفريق كم عضو تقريبًا؟
+
+ولو حبيت
+أقدر أيضًا أضيف أفكار احترافية جدًا مثل:
+
+بوت يترجم الفصل ويجهزه للفريق تلقائيًا
+
+نظام توزيع العمل تلقائيًا
+
+AI يكتشف الفقاعات ويقصها
+
+ولو قلت تمتم
+سأكتب لك برومبت ضخم احترافي جدًا لبناء البوت كامل. 🤖🔥
+
+
+الرتب عندي في السيرفر هي 
+محرر ed
+ مترجم tl
+مدقق ترجما و مدقق تحرير و تكون لي الناس تحت التعليم 
+لا تبده لسه 
+
+تمام 👍 بما إن رتب فريق Team X عندكم محددة، خلينا نبني النظام حولها عشان البوت يكون متوافق 100٪ مع طريقة عملكم. لن أكتب البرومبت بعد، فقط سنصمم الفكرة. 🚀
+
+🎭 رتب الفريق عندكم
+حسب كلامك الرتب هي:
+
+ED  = Editor (محرر)
+TL  = Translator (مترجم)
+PR  = Proofreader (مدقق)
+Trainee = تحت التدريب
+لكن قلت أيضًا:
+
+مدقق ترجمة
+
+مدقق تحرير
+
+فممكن نقسم المدققين داخل البوت.
+
+النظام المقترح
+الرمز	الوظيفة
+TL	مترجم
+ED	محرر / مبيض
+PR-TL	مدقق ترجمة
+PR-ED	مدقق تحرير
+TR	متدرب
+🧠 Workflow للفصل حسب فريقك
+الفصل يمر بالمراحل:
+
+RAW
+↓
+TL (الترجمة)
+↓
+PR-TL (مراجعة الترجمة)
+↓
+ED (التنظيف والتحرير)
+↓
+PR-ED (مراجعة التحرير)
+↓
+READY
+البوت يتابع هذه المراحل تلقائيًا.
+
+📊 نظام الإحصائيات لكل رتبة
+البوت يسجل:
+
+للمترجم TL
+عدد الفصول المترجمة
+
+عدد الكلمات
+
+المشاريع
+
+للمحرر ED
+عدد الصفحات
+
+الفصول
+
+للمدقق PR
+عدد الفصول التي راجعها
+
+للمتدرب TR
+المهام التدريبية
+
+التقييم
+
+👤 نظام البروفايل
+مثال:
+
+👤 Ahmed
+
+Role: TL
+Rank: Senior
+
+Total Chapters: 54
+This Month: 7
+
+Projects:
+• Nano Machine
+• Return of the Mount Hua Sect
+🎓 نظام المتدربين
+ميزة مهمة.
+
+المتدرب يكون تحت:
+
+Mentor
+مثلاً:
+
+TR: Ali
+Mentor: Ahmed
+البوت يتابع:
+
+training tasks
+ويحسب:
+
+training progress
+📚 نظام المشاريع
+كل مانهوه داخل البوت تحتوي:
+
+Title
+Source
+Current Raw
+Team
+Roles
+مثال:
+
+Nano Machine
+
+TL: Ahmed
+PR-TL: Sara
+ED: Omar
+PR-ED: Lina
+🚨 نظام تنبيه نزول الفصول
+عند نزول فصل جديد في مواقع مثل:
+
+NewToki
+
+Asura Scans
+
+Vortex Scans
+
+Nirvana Scans
+
+البوت يرسل:
+
+🚨 Chapter 215 detected
+
+Project: Nano Machine
+
+RAW:
+link
+ويمنشن الفريق.
+
+📂 نظام ملفات الفصل
+البوت ينشئ تلقائيًا:
+
+RAW
+PSD
+FINAL
+ويربطها مع:
+
+Google Drive.
+
+💰 نظام الرواتب
+مثال:
+
+TL = $6
+ED = $5
+PR = $3
+البوت يحسب:
+
+monthly salary
+📈 لوحة الفريق
+البوت يرسل إحصائيات مثل:
+
+Team X
+
+Chapters this month: 34
+Active projects: 7
+Fastest translator: Ahmed
+🔥 أفكار احترافية جدًا ممكن تضيفها
+1️⃣ توزيع العمل تلقائي
+البوت يختار:
+
+أفضل مترجم متاح.
+
+2️⃣ نظام سمعة
+Reputation
+للأعضاء.
+
+3️⃣ نظام Anti-delay
+لو أحد تأخر:
+
+⚠ TL hasn't started chapter
+💡 فكرة قوية جدًا
+نضيف لوحة Kanban داخل البوت:
+
+RAW
+↓
+TL
+↓
+PR
+↓
+ED
+↓
+Release
+مثل Trello.
+
+❗ سؤالين مهمين قبل كتابة البرومبت
+1️⃣ هل المحرر ED يقوم أيضًا بـ:
+
+تنظيف الصفحات
+
+كتابة النص (typesetting)
+
+أم عندكم رتبة أخرى لذلك؟
+
+2️⃣ هل تريد البوت ينشئ Thread لكل فصل تلقائيًا؟
+
+إذا جاوبتني على هذه النقاط
+سنكون جاهزين لكتابة برومبت ضخم جدًا يبني البوت كامل. 🤖🔥
+
+
+لا الرواتب عندي حسب العمل حيث انه يكون كده  الترجمه و التحرير تفس الراتب و لاتوجد فلوس للمدقق 
+خلي تدقيق الفصول يكون  بس للمتدرب اغلب التاس عندي احترافيه لا تحتاج تدقيق 
+المحرر يقوم غالب الوقت بي سحب الفصل من ال موقع الاصلي و تنظيف الفصل و وضع النص 
+الاعمال عندي يكون كل عمل له شنل لي وحدها بس مش كل فصل له ثرد لي وحده 
+لان نحن تيم اكس  مش ينفع كل فصل في ثردز 
+
+حبيت باقي الافكار بس لا تبدا لسه 
+
+تمام 👍 الآن الصورة بدأت توضح أكثر لطريقة عمل Team X. سأرتب ما قلته وأضيف تحسينات احترافية بدون كتابة البرومبت بعد. 🚀
+
+🧠 هيكل العمل الحقيقي في Team X
+الرتب الأساسية
+TL = Translator (مترجم)
+ED = Editor (محرر)
+TR = Trainee (متدرب)
+ملاحظاتك المهمة
+الترجمة والتحرير نفس الراتب 💰
+
+المدقق غير موجود
+
+التدقيق يكون غالبًا للمتدربين فقط
+
+ED يقوم بـ:
+
+سحب الفصل RAW
+
+تنظيف الصفحات
+
+وضع النص (Typesetting)
+
+يعني المحرر عندكم يقوم بثلاث مهام.
+
+⚙️ Workflow الحقيقي للفصل
+بناءً على كلامك:
+
+RAW
+↓
+TL (ترجمة)
+↓
+ED (تنظيف + وضع النص)
+↓
+Release
+أما المتدرب:
+
+TL
+↓
+TR review
+↓
+ED
+يعني التدقيق فقط للتدريب.
+
+📂 نظام الشنلات في السيرفر
+كل عمل له Channel خاص.
+
+مثال:
+
+#nano-machine
+#mount-hua-sect
+#legend-of-northern-blade
+داخل الشنل يكون:
+
+إعلان نزول الفصل
+
+متابعة الترجمة
+
+إرسال الملفات
+
+إنهاء الفصل
+
+البوت يدير كل هذا.
+
+🚨 نظام اكتشاف الفصول (أهم شيء)
+البوت يراقب مواقع مثل:
+
+NewToki
+
+Asura Scans
+
+Vortex Scans
+
+Nirvana Scans
+
+عند نزول فصل جديد:
+
+يرسل في الشنل الخاص بالعمل.
+
+مثال:
+
+🚨 RAW Chapter Detected
+
+Project: Nano Machine
+Chapter: 215
+
+RAW Link:
+link
+ويمنشن الفريق.
+
+📥 نظام سحب الراو تلقائي (ميزة قوية)
+لو الفصل مجاني:
+
+البوت يستطيع:
+
+1️⃣ تحميل الصور
+2️⃣ ترتيبها
+3️⃣ ضغطها
+4️⃣ رفعها إلى Google Drive
+
+ثم يرسل:
+
+RAW Uploaded
+Drive Link
+لو الفصل مدفوع:
+
+يرسل الرابط فقط.
+
+👤 نظام بروفايل الأعضاء
+كل عضو لديه:
+
+Role
+Total Chapters
+Chapters This Month
+Current Projects
+Salary Earned
+مثال:
+
+👤 Ahmed
+
+Role: TL
+Total Chapters: 142
+This Month: 11
+Projects:
+• Nano Machine
+• Return of the Mount Hua Sect
+
+Earned This Month: $55
+💰 نظام الرواتب
+بما أن TL و ED نفس السعر.
+
+مثال:
+
+chapter_payment = $6
+كل فصل:
+
+TL = $6
+
+ED = $6
+
+البوت يحسب تلقائيًا.
+
+/salary @user
+🎓 نظام المتدربين
+المتدرب يكون له:
+
+mentor
+training tasks
+chapters reviewed
+مثال:
+
+TR: Ali
+Mentor: Ahmed
+
+Training Progress: 60%
+📊 لوحة الفريق
+البوت يرسل:
+
+📊 Team X Stats
+
+Chapters This Month: 52
+Active Projects: 9
+Active Translators: 6
+Active Editors: 5
+🔥 أفكار احترافية جدًا أقترح إضافتها
+1️⃣ نظام Claim للفصول
+بدل الفوضى.
+
+/claim nano-machine 215
+المترجم يحجز الفصل.
+
+2️⃣ نظام انتهاء المهلة
+لو لم يبدأ العمل خلال:
+
+2 hours
+البوت يحرر الفصل.
+
+3️⃣ نظام ترتيب الأولوية
+مثلاً:
+
+priority:
+high
+medium
+low
+4️⃣ نظام أرشفة الفصول
+عند انتهاء الفصل:
+
+/status done
+البوت يسجل الفصل.
+
+5️⃣ نظام تقدم العمل
+في الشنل:
+
+Chapter 215
+
+TL: ✅
+ED: ⏳
+Release: ❌
+🧠 فكرة قوية جدًا تناسب Team X
+نعمل أمر:
+
+/project dashboard
+يعرض:
+
+Nano Machine
+
+RAW: 215
+Working: 214
+
+TL: Ahmed
+ED: Omar
+⚙️ التقنيات الأفضل للبوت
+Backend:
+
+Node.js
+discord.js
+Database:
+
+PostgreSQL
+Scraping:
+
+Puppeteer
+Cheerio
+💡 فكرة قوية جدًا للفصول
+بدل ما البوت يراقب الموقع فقط.
+
+نعمل:
+
+RAW Tracker
+يسجل:
+
+last chapter
+ويعرف أي فصل جديد.
+
+❗ قبل كتابة البرومبت النهائي
+أحتاج 5 تفاصيل صغيرة عشان يطلع البوت مثالي:
+
+1️⃣ اسم البوت الذي تريده.
+
+2️⃣ هل تريد أوامر Slash فقط أم Slash + Prefix؟
+
+3️⃣ هل تريد البوت يعمل Thread مؤقت للفصل ثم يحذفه بعد الانتهاء؟
+
+4️⃣ هل تريد لوحة Web Dashboard أم Discord فقط؟
+
+5️⃣ هل تريد البوت يسحب RAW تلقائي فعلاً أم مجرد إرسال الرابط؟
+
+بعد ردك، لما تقول فقط:
+
+تمتم
+
+سأكتب لك برومبت احترافي ضخم جدًا (مستوى بناء مشروع كامل)
+يمكنك إعطاؤه لأي AI ليبني لك البوت كامل. 🤖🔥
+
+
+لا ابيه  يسحب الفصل و يشتغل بي السلاش كماند مشعايزهيعمل ثردز خالص 
+بس عندي شوي اقكار 
+زي مثلا  
+صاحب الفريقيبي يضيف عمل جديد 
+يعمل امر بيه يعمل شانل جديده بي اسم العمل 
+و يكون في تصانيف زي عمل حصري او تنافسي يكونو بي دي الرموز 🔴🔷
+
+ممتاز 👌 الفكرة التي ذكرتها ممتازة جدًا لتنظيم السيرفر، ويمكن تطويرها لتصبح نظام إدارة أعمال كامل داخل البوت. لن أكتب البرومبت بعد، فقط سأبني الفكرة معك. 🚀
+
+📚 نظام إضافة عمل جديد (Project Creation System)
+صاحب الفريق يستخدم أمر Slash.
+
+مثال:
+
+/project add
+ثم البوت يطلب البيانات:
+
+اسم العمل
+
+الموقع المصدر
+
+نوع العمل
+
+عدد الفريق
+
+الفصل الحالي
+
+عند تنفيذ الأمر
+البوت يقوم تلقائيًا بـ:
+
+1️⃣ إنشاء Channel جديد باسم العمل
+مثلاً:
+
+#nano-machine
+2️⃣ إرسال رسالة لوحة تحكم داخل الشنل
+
+📖 Nano Machine
+
+Source: NewToki
+Type: 🔴 Exclusive
+
+RAW: 215
+Working: none
+3️⃣ ربط الشنل بالمشروع داخل قاعدة البيانات.
+
+🔴🔷 نظام تصنيف الأعمال
+فكرتك بالرموز ممتازة.
+
+🔴 عمل حصري
+🔴 Exclusive
+يعني:
+
+الفريق الوحيد الذي يترجمه
+
+أولوية عالية
+
+🔷 عمل تنافسي
+🔷 Competitive
+يعني:
+
+يوجد فرق أخرى تترجمه
+
+يحتاج سرعة
+
+يمكن أن يظهر هكذا داخل الشنل:
+
+🔴 Nano Machine
+🔷 Return of the Mount Hua Sect
+🚨 نظام اكتشاف الفصل
+البوت يراقب المواقع مثل:
+
+NewToki
+
+Asura Scans
+
+Vortex Scans
+
+كل بضع دقائق.
+
+عند نزول فصل جديد:
+
+يرسل في الشنل الخاص بالعمل:
+
+🚨 New RAW Chapter
+
+Nano Machine
+Chapter 216
+
+RAW:
+link
+ثم:
+
+المحرر يسحب الفصل
+
+أو البوت يسحبه تلقائيًا.
+
+📥 نظام سحب الفصل
+البوت يستطيع:
+
+1️⃣ فتح الصفحة
+2️⃣ استخراج الصور
+3️⃣ تحميل الصور
+4️⃣ رفعها إلى Google Drive
+
+ثم يرسل:
+
+RAW Uploaded
+
+Drive:
+link
+⚙️ نظام Claim للفصل
+حتى لا يعمل شخصان على نفس الفصل.
+
+/chapter claim nano-machine 216
+النتيجة:
+
+TL: Ahmed
+ED: waiting
+👤 نظام الأعضاء
+كل عضو له:
+
+Role
+Total Chapters
+Monthly Chapters
+Salary
+Projects
+💰 نظام الرواتب
+بما أن TL و ED نفس الراتب.
+
+مثال:
+
+chapter_payment = $6
+يعني:
+
+TL = $6
+ED = $6
+البوت يحسب تلقائيًا.
+
+📊 لوحة المشروع داخل الشنل
+مثال الرسالة المثبتة:
+
+📖 Nano Machine
+🔴 Exclusive
+
+RAW: 216
+Working: 215
+
+TL: Ahmed
+ED: Omar
+🔥 فكرة قوية جدًا تناسبك
+نضيف Emoji Status للفصل.
+
+🟡 Translating
+🔵 Editing
+🟢 Done
+🧠 فكرة احترافية أخرى
+نظام:
+
+/project list
+يعرض كل الأعمال:
+
+🔴 Nano Machine
+🔷 Mount Hua Sect
+🔷 Legend of the Northern Blade
+⚠️ مشكلة يجب التفكير فيها
+مواقع مثل:
+
+NewToki
+
+أحيانًا:
+
+تغير HTML
+
+تمنع scraping
+
+لذلك يجب أن يكون النظام:
+
+Flexible scraper
+🔥 فكرة قوية جدًا للبوت
+نظام:
+
+/project panel
+يعرض لوحة لكل الأعمال في رسالة واحدة.
+
+عندي 3 أفكار مجنونة يمكن إضافتها 🤯
+1️⃣ AI يتوقع وقت نزول الفصل
+2️⃣ Auto Assign
+البوت يختار المترجم تلقائيًا.
+
+3️⃣ نظام Anti-Leak
+لو تسرب الفصل.
+
+قبل كتابة البرومبت النهائي
+أحتاج منك 4 تفاصيل صغيرة:
+
+1️⃣ هل تريد اسم الشنل يكون هكذا؟
+
+🔴-nano-machine
+🔷-mount-hua
+أم:
+
+nano-machine
+2️⃣ هل تريد قسم خاص للأعمال مثل:
+
+📂 PROJECTS
+3️⃣ هل تريد البوت يثبت رسالة Dashboard داخل الشنل؟
+
+4️⃣ هل تريد البوت يحدث لوحة العمل تلقائيًا؟
+
+عندما تقول فقط:
+
+تمتم
+
+سأكتب لك برومبت احترافي ضخم جدًا (مستوى بناء نظام كامل)
+يستطيع أي AI أن يبني به بوت Team X كامل 🤖🔥.
+
+
+في شي كمان ابيه امر او مثلا في محرر او مترجم لي عمل غير موجود اجازه او شي زي هيلك يعمل منشن بي اسم  الفصل في روم عامه  فيها اسم الهمل و ان في فصل متاح و يكوت في زر اخضر  يداس عليه مره وحده بس و او واحد يدوس ياخد الفصل البوت يفتح الروم  لي ده الشخص ويقوم يمنشنه ع الفصل 
+
+فهمت الفكرة 👍 وهي ممتازة جدًا لتنظيم العمل عندما يكون أحد غائب. دعني أصيغها كنظام واضح يمكن إضافته للبوت، بدون كتابة البرومبت النهائي بعد. 🚀
+
+📢 نظام الفصول المتاحة (Open Chapter System)
+إذا كان:
+
+المترجم غائب
+
+المحرر غائب
+
+أو الفصل لم يتم حجزه
+
+يمكن لأي عضو نشر الفصل في روم عام للفصول المتاحة.
+
+مثلاً:
+
+#available-chapters
+⚙️ كيف يعمل النظام
+المحرر أو المترجم يستخدم أمر:
+
+/chapter open
+ويكتب:
+
+اسم العمل
+
+رقم الفصل
+
+الدور المطلوب (TL أو ED)
+
+الرسالة التي ينشرها البوت
+في روم الفصول المتاحة.
+
+مثال:
+
+📢 Chapter Available
+
+📖 Work: Nano Machine
+📄 Chapter: 216
+🧑‍💻 Needed: Translator
+
+Press the button to claim
+زر:
+
+🟢 Claim Chapter
+
+🟢 زر Claim
+عندما يضغط شخص على الزر:
+
+1️⃣ الزر يصبح مقفل
+(لا يمكن الضغط عليه مرة أخرى)
+
+2️⃣ البوت يعلن:
+
+✅ Chapter claimed by Ahmed
+3️⃣ البوت يرسل رسالة في شنل العمل.
+
+مثال:
+
+📌 Chapter 216
+
+TL: Ahmed
+4️⃣ البوت يعمل منشن للشخص.
+
+🔒 منع حجز الفصل مرتين
+الزر يعمل مرة واحدة فقط.
+
+لو شخص آخر ضغط:
+
+❌ This chapter is already claimed
+📂 ربطه مع نظام المشاريع
+لو المشروع موجود.
+
+البوت يعرف:
+
+الشنل
+
+الفريق
+
+الحالة
+
+ويربط الفصل تلقائيًا.
+
+💡 فكرة تحسين قوية
+نضيف وقت انتهاء للفصل.
+
+مثلاً:
+
+12 hours
+لو الشخص لم يبدأ العمل:
+
+البوت يعيد الفصل إلى:
+
+available-chapters
+🎯 مثال كامل للعملية
+1️⃣ المحرر يكتب:
+
+/chapter open nano-machine 216 TL
+2️⃣ البوت ينشر في روم:
+
+#available-chapters
+3️⃣ يظهر زر:
+
+🟢 Claim
+
+4️⃣ المترجم يضغط.
+
+5️⃣ البوت:
+
+يقفل الزر
+
+يعلن
+
+يربط الفصل بالمشروع
+
+🔥 فكرة احترافية جدًا
+الزر يظهر هكذا:
+
+🟢 Claim
+🟡 Ask Question
+🔴 Cancel
+🧠 فكرة إضافية قوية
+لو الفصل تنافسي 🔷
+
+البوت يعمل منشن:
+
+@Translator
+لتسريع الحجز.
+
+⚠️ مشكلة صغيرة يجب تحديدها
+عندما يضغط الشخص الزر:
+
+هل تريد:
+
+الخيار 1
+البوت فقط يرسل رسالة في شنل العمل.
+
+الخيار 2
+البوت أيضًا يعمل:
+
+Private thread
+لهذا الفصل.
+
+لكنك قلت أنك لا تريد Threads.
+
+إذن الأغلب سيكون:
+
+✔ رسالة في الشنل فقط.
+
+💡 فكرة قوية جدًا تناسب Team X
+نضيف لوحة للفصول المتاحة:
+
+📢 Available Chapters
+
+Nano Machine 216
+Mount Hua 143
+Northern Blade 201
+عندي فكرة أخيرة مجنونة للبوت 🤯
+نظام:
+
+auto claim suggestion
+البوت يقترح:
+
+أفضل مترجم متاح.
+
+إذا أردت، في الرسالة القادمة أستطيع أيضًا تصميم:
+
+📊 الهيكل الكامل للبوت (Architecture)
+حتى يصبح مشروع احترافي جدًا قبل كتابة البرومبت.
+
+وعندما تقول:
+
+تمتم
+
+سأكتب لك برومبت ضخم جدًا يبني البوت كامل بدقة عالية 🤖🔥.
+
+
+لا الامر يظهر للادمن بس اما الاعضاء يظهر زر  claim 
+
+تمام 👍 الفكرة الآن واضحة جدًا، وسأرتبها كنظام احترافي داخل البوت بدون كتابة البرومبت بعد. 🚀
+
+📢 نظام الفصول المتاحة (Claim System)
+الفكرة
+فقط الأدمن أو الإدارة يستطيع نشر فصل متاح.
+أما الأعضاء فلا يرون الأمر، بل يرون زر Claim فقط.
+
+👑 من يستطيع نشر الفصل
+الأوامر التالية تكون مقيدة برتبة الإدارة:
+
+مثلاً:
+
+/chapter open
+الأمر لا يظهر إلا لـ:
+
+Admin
+Owner
+Manager
+⚙️ ماذا يفعل الأمر
+الأدمن يكتب:
+
+/chapter open
+ثم يحدد:
+
+اسم العمل
+
+رقم الفصل
+
+الدور المطلوب
+
+مثال:
+
+Work: Nano Machine
+Chapter: 216
+Needed: Translator
+📢 الرسالة التي ينشرها البوت
+في روم الفصول المتاحة.
+
+مثال:
+
+📢 Chapter Available
+
+📖 Work: Nano Machine
+📄 Chapter: 216
+👤 Needed: Translator
+
+Click the button to claim the chapter
+زر:
+
+🟢 Claim
+
+🟢 ماذا يحدث عند الضغط
+عندما عضو يضغط الزر:
+
+1️⃣ البوت يقفل الزر
+(لا يمكن الضغط عليه مرة أخرى)
+
+2️⃣ البوت يعلن:
+
+✅ Ahmed claimed Chapter 216
+3️⃣ البوت يذهب إلى شنل العمل.
+
+مثلاً:
+
+#nano-machine
+ويرسل:
+
+📌 Chapter 216
+
+Translator: @Ahmed
+4️⃣ يعمل منشن للشخص.
+
+🔒 منع أخذ الفصل مرتين
+إذا حاول شخص آخر الضغط:
+
+❌ This chapter has already been claimed
+🧠 تحسين قوي للنظام
+نضيف معلومات أكثر في الرسالة.
+
+مثال:
+
+📖 Nano Machine
+🔴 Exclusive
+
+Chapter: 216
+Role Needed: TL
+⏳ نظام انتهاء المهلة (اقتراح مهم)
+لو الشخص أخذ الفصل ولم يعمل عليه.
+
+بعد:
+
+12 hours
+البوت يعيد الفصل إلى روم:
+
+#available-chapters
+📂 الربط مع المشروع
+البوت يعرف تلقائيًا:
+
+الشنل الخاص بالعمل
+
+الفريق
+
+ويربط الفصل بالمشروع.
+
+🎨 شكل الرسالة النهائي
+مثال احترافي:
+
+📢 Available Chapter
+
+📖 Work: Nano Machine
+🔴 Type: Exclusive
+
+📄 Chapter: 216
+👤 Needed: Translator
+زر:
+
+🟢 Claim Chapter
+
+🔥 فكرة احترافية جدًا
+نضيف عداد:
+
+⏱ Available for: 24h
+لو لم يأخذه أحد:
+
+الأدمن يتم تنبيهه.
+
+💡 فكرة قوية جدًا تناسب Team X
+نضيف روم:
+
+#chapter-log
+البوت يسجل كل شيء:
+
+Ahmed claimed Nano Machine 216
+Omar finished editing Nano Machine 215
+❗ نقطة مهمة للبوت
+حتى يعمل هذا النظام جيدًا:
+
+البوت يحتاج قاعدة بيانات لحفظ:
+
+projects
+chapters
+members
+claims
+salary
+عندي فكرتين قويتين جدًا للبوت 🤯
+1️⃣ نظام Auto RAW
+عند نزول الفصل في مواقع مثل
+NewToki
+
+البوت يرسل مباشرة زر Claim للفصل الجديد.
+
+2️⃣ نظام سرعة الترجمة
+البوت يسجل:
+
+fastest translator
+في الشهر.
+
+قبل كتابة البرومبت النهائي
+أريد التأكد من شيء صغير:
+
+هل تريد زر Claim يظهر فقط لـ:
+
+الخيار 1
+كل أعضاء السيرفر
+
+أم
+
+الخيار 2
+فقط رتبة
+
+TL
+ED
+وعندما تقول:
+
+تمتم
+
+سأكتب لك برومبت احترافي ضخم جدًا يبني
+بوت Team X كامل (نظام إدارة استوديو مانهوات) 🤖🔥.
+
+
+سوي البرونت  تمتم
+
+ممتاز 🔥 سأكتب لك برومبت احترافي جدًا ومفصل يمكنك إعطاؤه لأي AI متخصص في البرمجة ليبني بوت Discord كامل لإدارة فريق ترجمة المانهوات (Team X).
+البرومبت مصمم ليجعل الـAI يبني مشروع حقيقي قابل للتشغيل وليس مجرد مثال. 🚀
+
+Writing
+You are a senior backend engineer and Discord bot architect.
+
+Your task is to build a professional Discord bot for managing a manhwa scanlation team called "Team X".
+
+This bot must be production-ready, modular, and scalable.
+
+The bot will manage translation workflow, raw chapter tracking, project channels, team member profiles, and claim systems.
+
+The bot must use Node.js with discord.js v14 and a PostgreSQL database.
+
+The code must be clean, modular, and well-structured.
+
+GENERAL REQUIREMENTS
+
+• Use Slash Commands only
+• No prefix commands
+• No automatic thread creation
+• Each project must have its own Discord channel
+• Only admins can create projects or open chapters
+• Members interact mainly using buttons
+
+TEAM ROLES
+
+The team has three main roles:
+
+TL = Translator
+ED = Editor
+TR = Trainee
+
+Workflow of chapters:
+
+RAW
+↓
+TL (translation)
+↓
+ED (cleaning + typesetting)
+↓
+Release
+
+Trainees can review translations for training but they are not part of the main workflow.
+
+DATABASE STRUCTURE
+
+Create tables:
+
+users
+
+discord_id
+
+username
+
+role
+
+total_chapters
+
+monthly_chapters
+
+salary_earned
+
+projects
+
+id
+
+name
+
+slug
+
+source_site
+
+type (exclusive or competitive)
+
+channel_id
+
+current_raw
+
+created_at
+
+chapters
+
+id
+
+project_id
+
+chapter_number
+
+translator_id
+
+editor_id
+
+status
+
+raw_link
+
+created_at
+
+claims
+
+id
+
+chapter_id
+
+user_id
+
+role
+
+claimed_at
+
+PROJECT TYPES
+
+Projects must have categories:
+
+🔴 Exclusive
+🔷 Competitive
+
+These icons must appear in project messages and dashboards.
+
+PROJECT CREATION SYSTEM
+
+Admin command:
+
+/project create
+
+Inputs:
+
+project_name
+
+source_site
+
+type (exclusive or competitive)
+
+Bot actions:
+
+Automatically create a new channel named after the project
+
+Example:
+nano-machine
+
+Send a pinned project dashboard message inside the channel.
+
+Example message:
+
+📖 Nano Machine
+🔴 Exclusive
+
+RAW Chapter: 215
+Working Chapter: None
+
+Translator: None
+Editor: None
+
+RAW CHAPTER DETECTION SYSTEM
+
+The bot must track new raw chapters from sites such as:
+
+NewToki
+Asura Scans
+Vortex Scans
+Nirvana Scans
+
+Use web scraping with Puppeteer or Cheerio.
+
+Every few minutes the bot checks for new chapters.
+
+When a new chapter is detected:
+
+Post a notification in the project channel
+
+Include the RAW link
+
+Optionally download images if the chapter is free
+
+RAW DOWNLOADER
+
+If the chapter is free:
+
+The bot should:
+
+Extract image URLs
+
+Download images
+
+Compress them
+
+Upload them to Google Drive
+
+Send the Drive link in the channel
+
+If the chapter is paid:
+Only send the raw link.
+
+OPEN CHAPTER SYSTEM
+
+Admins can open a chapter for claiming.
+
+Command:
+
+/chapter open
+
+Inputs:
+
+project
+
+chapter_number
+
+role_needed (TL or ED)
+
+The bot posts in a public channel called:
+
+#available-chapters
+
+Example message:
+
+📢 Chapter Available
+
+📖 Work: Nano Machine
+🔴 Type: Exclusive
+
+Chapter: 216
+Role Needed: Translator
+
+A green button must appear:
+
+[ Claim Chapter ]
+
+CLAIM BUTTON SYSTEM
+
+Only one user can claim the chapter.
+
+When a member presses the Claim button:
+
+The button becomes disabled
+
+The bot announces the user who claimed it
+
+The bot posts a message in the project channel
+
+Example:
+
+📌 Chapter 216
+
+Translator: @user
+
+If someone tries pressing again:
+
+Return error message:
+"This chapter has already been claimed."
+
+MEMBER PROFILE SYSTEM
+
+Command:
+
+/profile
+
+Displays:
+
+User role
+Total chapters completed
+Chapters this month
+Projects worked on
+Total salary earned
+
+The profile should be displayed using a clean Discord embed.
+
+SALARY SYSTEM
+
+Both Translator and Editor earn the same salary per chapter.
+
+Example:
+
+chapter_payment = configurable
+
+Example calculation:
+
+Translator = $6
+Editor = $6
+
+The bot automatically tracks completed chapters and calculates monthly earnings.
+
+PROJECT DASHBOARD
+
+Each project channel must contain a pinned dashboard message.
+
+Example:
+
+📖 Nano Machine
+🔴 Exclusive
+
+RAW: 216
+Working: 215
+
+Translator: Ahmed
+Editor: Omar
+
+LOG SYSTEM
+
+Create a log channel:
+
+#chapter-log
+
+The bot records actions:
+
+Ahmed claimed Nano Machine Chapter 216
+Omar finished editing Chapter 215
+
+PERMISSIONS
+
+Admin only commands:
+
+/project create
+/chapter open
+
+Members can only:
+
+• press claim buttons
+• view dashboards
+• view profiles
+
+BOT ARCHITECTURE
+
+Structure the project:
+
+src/
+commands/
+events/
+buttons/
+database/
+services/
+scrapers/
+
+Important modules:
+
+project manager
+chapter manager
+raw scraper
+salary calculator
+claim system
+
+ADDITIONAL REQUIREMENTS
+
+• Use embeds for all bot messages
+• Use buttons for interactions
+• Use environment variables for tokens
+• Include error handling
+• Include setup instructions
+
+FINAL GOAL
+
+Build a fully working Discord bot that allows the Team X scanlation team to:
+
+• manage projects
+• detect new chapters automatically
+• download RAW chapters
+• claim work easily
+• track team productivity
+• manage chapter workflow
+
+The result must be a professional production-ready bot.
+
+🔥 هذا البرومبت مصمم بحيث أي AI قوي في البرمجة سيقوم ببناء بوت كامل تقريبًا.
+
+لو حبيت، أقدر أيضًا أعطيك:
+
+نسخة برومبت أقوى 10× (يبني البوت مع لوحة تحكم ويب)
+
+نسخة تبني البوت + موقع إدارة كامل للفريق
+
+أفكار تجعل البوت أقوى من 95٪ من بوتات فرق المانهوات.
+
+
+حبيت اديني البرونت الجديد وحط فيه افكارمن عندك زيما تبي الا فكره ان البوت يعمل ع داش بورت 
+عندك المايكوريني ابداعك 
+
+🔥 جميل… سأعطيك نسخة أقوى بكثير من البرومبت — نسخة مصممة ليجعل أي AI يبني بوت احترافي جدًا لإدارة فريق مانهوات كامل.
+سأضيف أفكار احترافية جديدة لكن لن أضيف Dashboard كما طلبت.
+
+البرومبت التالي مكتوب بحيث يجعل الذكاء الاصطناعي يبني نظام متكامل وليس بوت بسيط.
+
+Writing
+You are a senior software engineer and Discord bot architect specializing in automation systems for content production teams.
+
+Your task is to design and implement a highly professional Discord bot for a manhwa scanlation team called "Team X".
+
+The bot must be designed as a complete workflow management system for scanlation teams, not just a simple Discord utility.
+
+The bot must be production-grade, scalable, modular, and built using Node.js with discord.js v14 and PostgreSQL.
+
+The system must rely heavily on slash commands, embeds, and interactive buttons.
+
+Threads must NEVER be used.
+
+CORE PURPOSE
+
+The bot manages the entire lifecycle of scanlation production including:
+
+• project management
+• raw chapter tracking
+• chapter claiming
+• team member profiles
+• salary tracking
+• chapter workflow management
+• automation of repetitive tasks
+
+The bot must significantly improve workflow efficiency for the team.
+
+TEAM STRUCTURE
+
+The team has three roles:
+
+TL = Translator
+ED = Editor
+TR = Trainee
+
+Editors perform multiple responsibilities:
+
+• downloading RAW chapters
+• cleaning pages
+• typesetting text
+
+The workflow is simplified:
+
+RAW
+↓
+TL (translation)
+↓
+ED (cleaning + typesetting)
+↓
+Release
+
+Trainees are optional and may review chapters for training purposes.
+
+PROJECT TYPES
+
+Projects have two types:
+
+🔴 Exclusive
+🔷 Competitive
+
+Exclusive projects are higher priority.
+
+Competitive projects require faster releases.
+
+The icons must appear in all project embeds.
+
+PROJECT CREATION SYSTEM
+
+Admin command:
+
+/project create
+
+Inputs:
+
+• project_name
+• source_site
+• project_type (exclusive or competitive)
+
+Bot actions:
+
+Create a new Discord channel named after the project.
+
+Example:
+
+nano-machine
+
+Send a pinned dashboard message inside the channel.
+
+Example:
+
+📖 Nano Machine
+🔴 Exclusive
+
+RAW: 215
+Working: None
+
+Translator: None
+Editor: None
+
+Store the project in the database.
+
+PROJECT MANAGEMENT COMMANDS
+
+Admin commands:
+
+/project create
+/project remove
+/project info
+/project list
+
+Members can only view project info.
+
+RAW CHAPTER TRACKER
+
+The bot must automatically track RAW releases from scanlation websites.
+
+Example sources:
+
+NewToki
+Asura Scans
+Vortex Scans
+Nirvana Scans
+
+Use Puppeteer or Cheerio.
+
+The bot must check for updates every few minutes.
+
+When a new chapter appears:
+
+• Post notification in the project channel
+• Include RAW link
+• Update project RAW chapter
+
+Example message:
+
+🚨 New RAW Chapter Detected
+
+📖 Nano Machine
+Chapter: 216
+
+RAW Link:
+(link)
+
+RAW DOWNLOADER
+
+If the chapter is free:
+
+The bot must automatically:
+
+Extract image URLs
+
+Download images
+
+Sort pages correctly
+
+Compress them into a ZIP file
+
+Upload them to Google Drive
+
+Send the download link
+
+If the chapter is locked or paid:
+
+Only send the chapter link.
+
+AVAILABLE CHAPTER SYSTEM
+
+Admins can open a chapter for claiming.
+
+Command:
+
+/chapter open
+
+Inputs:
+
+• project
+• chapter_number
+• role_needed (TL or ED)
+
+The bot posts in a public channel:
+
+#available-chapters
+
+Example embed:
+
+📢 Chapter Available
+
+📖 Work: Nano Machine
+🔴 Exclusive
+
+Chapter: 216
+Needed Role: Translator
+
+A green button must appear:
+
+[ Claim Chapter ]
+
+CLAIM SYSTEM
+
+Members interact ONLY using the claim button.
+
+When a user presses the button:
+
+The button locks
+
+The bot announces the user who claimed it
+
+The bot assigns the role in the project channel
+
+Example message in project channel:
+
+📌 Chapter 216
+
+Translator: @user
+
+If someone tries claiming again:
+
+Return message:
+
+"This chapter has already been claimed."
+
+CLAIM TIME LIMIT SYSTEM
+
+If a user claims a chapter but does not start work within a configurable time:
+
+Example: 12 hours
+
+The bot automatically reopens the chapter and sends it back to the available list.
+
+CHAPTER STATUS SYSTEM
+
+Each chapter has statuses:
+
+Available
+Claimed
+Translating
+Editing
+Completed
+
+Commands:
+
+/chapter start
+/chapter finish
+/chapter status
+
+PROJECT DASHBOARD MESSAGE
+
+Each project channel must contain a pinned dashboard message that auto-updates.
+
+Example:
+
+📖 Nano Machine
+🔴 Exclusive
+
+RAW: 216
+Working: 215
+
+Translator: Ahmed
+Editor: Omar
+
+MEMBER PROFILE SYSTEM
+
+Command:
+
+/profile
+
+Display:
+
+Role
+Total chapters completed
+Chapters completed this month
+Projects worked on
+Salary earned this month
+
+Use Discord embeds.
+
+SALARY SYSTEM
+
+Translator and Editor receive the same payment per chapter.
+
+The value must be configurable.
+
+Example:
+
+chapter_payment = $6
+
+Example calculation:
+
+Translator = $6
+Editor = $6
+
+The bot automatically calculates monthly earnings.
+
+ACTIVITY TRACKING
+
+The bot must track team productivity.
+
+Statistics include:
+
+• most active translator
+• most active editor
+• chapters completed this month
+• fastest completed chapter
+
+PROJECT CLAIM SUGGESTION
+
+When a chapter becomes available, the bot may suggest translators who are currently active and have fewer assigned chapters.
+
+Example:
+
+"Suggested Translator: Ahmed"
+
+ANTI-SPAM & SAFETY
+
+Prevent duplicate claims.
+
+Prevent users claiming multiple chapters simultaneously unless allowed.
+
+LOGGING SYSTEM
+
+Create a log channel:
+
+#chapter-log
+
+Record events such as:
+
+Chapter claimed
+Chapter completed
+New RAW detected
+Project created
+
+BOT ARCHITECTURE
+
+Organize code into modules.
+
+Example structure:
+
+src/
+commands/
+events/
+buttons/
+database/
+scrapers/
+services/
+utils/
+
+Key services:
+
+project manager
+chapter manager
+claim system
+raw scraper
+salary manager
+
+ERROR HANDLING
+
+Handle errors such as:
+
+• scraper failures
+• missing permissions
+• invalid inputs
+
+SETUP INSTRUCTIONS
+
+Include setup instructions:
+
+• install dependencies
+• configure environment variables
+• database setup
+• bot startup
+
+FINAL GOAL
+
+Create a powerful Discord bot capable of running the entire workflow of a professional manhwa scanlation team without relying on external tools.
+
+🔥 هذا البرومبت أقوى من السابق بكثير لأنه يجعل الذكاء الاصطناعي يبني:
+
+نظام إدارة أعمال كامل
+
+نظام Claim احترافي
+
+متتبع RAW
+
+تحميل الفصول
+
+نظام رواتب
+
+نظام نشاط الفريق
+
+💡 إذا أردت، أستطيع أيضًا أن أعطيك نسخة مجنونة أقوى (Level Ultra) تضيف للبوت:
+
+نظام ذكاء اصطناعي يكتشف الفقاعات في الصور
+
+OCR تلقائي للفصول
+
+اقتراح مترجمين تلقائيًا
+
+تنظيم الملفات للفصل تلقائيًا
+
+وهي الأشياء التي تستعملها بعض الفرق الكبيرة. 🚀
+
+
+1 message remaining. Start a free Plus trial to keep the conversation going
+
+Try Plus free
+
+
+

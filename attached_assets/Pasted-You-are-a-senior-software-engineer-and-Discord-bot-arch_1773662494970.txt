@@ -1,0 +1,410 @@
+You are a senior software engineer and Discord bot architect specializing in automation systems for content production teams.
+
+Your task is to design and implement a **highly professional Discord bot for a manhwa scanlation team called "Team X"**.
+
+The bot must be designed as a **complete workflow management system for scanlation teams**, not just a simple Discord utility.
+
+The bot must be production-grade, scalable, modular, and built using **Node.js with discord.js v14** and **PostgreSQL**.
+
+The system must rely heavily on **slash commands, embeds, and interactive buttons**.
+
+Threads must NEVER be used.
+
+---
+
+CORE PURPOSE
+
+The bot manages the entire lifecycle of scanlation production including:
+
+• project management
+• raw chapter tracking
+• chapter claiming
+• team member profiles
+• salary tracking
+• chapter workflow management
+• automation of repetitive tasks
+
+The bot must significantly improve workflow efficiency for the team.
+
+---
+
+TEAM STRUCTURE
+
+The team has three roles:
+
+TL = Translator
+ED = Editor
+TR = Trainee
+
+Editors perform multiple responsibilities:
+
+• downloading RAW chapters
+• cleaning pages
+• typesetting text
+
+The workflow is simplified:
+
+RAW
+↓
+TL (translation)
+↓
+ED (cleaning + typesetting)
+↓
+Release
+
+Trainees are optional and may review chapters for training purposes.
+
+---
+
+PROJECT TYPES
+
+Projects have two types:
+
+🔴 Exclusive
+🔷 Competitive
+
+Exclusive projects are higher priority.
+
+Competitive projects require faster releases.
+
+The icons must appear in all project embeds.
+
+---
+
+PROJECT CREATION SYSTEM
+
+Admin command:
+
+/project create
+
+Inputs:
+
+• project_name
+• source_site
+• project_type (exclusive or competitive)
+
+Bot actions:
+
+1. Create a new Discord channel named after the project.
+
+Example:
+
+nano-machine
+
+2. Send a pinned dashboard message inside the channel.
+
+Example:
+
+📖 Nano Machine
+🔴 Exclusive
+
+RAW: 215
+Working: None
+
+Translator: None
+Editor: None
+
+3. Store the project in the database.
+
+---
+
+PROJECT MANAGEMENT COMMANDS
+
+Admin commands:
+
+/project create
+/project remove
+/project info
+/project list
+
+Members can only view project info.
+
+---
+
+RAW CHAPTER TRACKER
+
+The bot must automatically track RAW releases from scanlation websites.
+
+Example sources:
+
+NewToki
+Asura Scans
+Vortex Scans
+Nirvana Scans
+
+Use Puppeteer or Cheerio.
+
+The bot must check for updates every few minutes.
+
+When a new chapter appears:
+
+• Post notification in the project channel
+• Include RAW link
+• Update project RAW chapter
+
+Example message:
+
+🚨 New RAW Chapter Detected
+
+📖 Nano Machine
+Chapter: 216
+
+RAW Link:
+(link)
+
+---
+
+RAW DOWNLOADER
+
+If the chapter is free:
+
+The bot must automatically:
+
+1. Extract image URLs
+2. Download images
+3. Sort pages correctly
+4. Compress them into a ZIP file
+5. Upload them to Google Drive
+6. Send the download link
+
+If the chapter is locked or paid:
+
+Only send the chapter link.
+
+---
+
+AVAILABLE CHAPTER SYSTEM
+
+Admins can open a chapter for claiming.
+
+Command:
+
+/chapter open
+
+Inputs:
+
+• project
+• chapter_number
+• role_needed (TL or ED)
+
+The bot posts in a public channel:
+
+#available-chapters
+
+Example embed:
+
+📢 Chapter Available
+
+📖 Work: Nano Machine
+🔴 Exclusive
+
+Chapter: 216
+Needed Role: Translator
+
+A green button must appear:
+
+[ Claim Chapter ]
+
+---
+
+CLAIM SYSTEM
+
+Members interact ONLY using the claim button.
+
+When a user presses the button:
+
+1. The button locks
+2. The bot announces the user who claimed it
+3. The bot assigns the role in the project channel
+
+Example message in project channel:
+
+📌 Chapter 216
+
+Translator: @user
+
+If someone tries claiming again:
+
+Return message:
+
+"This chapter has already been claimed."
+
+---
+
+CLAIM TIME LIMIT SYSTEM
+
+If a user claims a chapter but does not start work within a configurable time:
+
+Example: 12 hours
+
+The bot automatically reopens the chapter and sends it back to the available list.
+
+---
+
+CHAPTER STATUS SYSTEM
+
+Each chapter has statuses:
+
+Available
+Claimed
+Translating
+Editing
+Completed
+
+Commands:
+
+/chapter start
+/chapter finish
+/chapter status
+
+---
+
+PROJECT DASHBOARD MESSAGE
+
+Each project channel must contain a pinned dashboard message that auto-updates.
+
+Example:
+
+📖 Nano Machine
+🔴 Exclusive
+
+RAW: 216
+Working: 215
+
+Translator: Ahmed
+Editor: Omar
+
+---
+
+MEMBER PROFILE SYSTEM
+
+Command:
+
+/profile
+
+Display:
+
+Role
+Total chapters completed
+Chapters completed this month
+Projects worked on
+Salary earned this month
+
+Use Discord embeds.
+
+---
+
+SALARY SYSTEM
+
+Translator and Editor receive the same payment per chapter.
+
+The value must be configurable.
+
+Example:
+
+chapter_payment = $6
+
+Example calculation:
+
+Translator = $6
+Editor = $6
+
+The bot automatically calculates monthly earnings.
+
+---
+
+ACTIVITY TRACKING
+
+The bot must track team productivity.
+
+Statistics include:
+
+• most active translator
+• most active editor
+• chapters completed this month
+• fastest completed chapter
+
+---
+
+PROJECT CLAIM SUGGESTION
+
+When a chapter becomes available, the bot may suggest translators who are currently active and have fewer assigned chapters.
+
+Example:
+
+"Suggested Translator: Ahmed"
+
+---
+
+ANTI-SPAM & SAFETY
+
+Prevent duplicate claims.
+
+Prevent users claiming multiple chapters simultaneously unless allowed.
+
+---
+
+LOGGING SYSTEM
+
+Create a log channel:
+
+#chapter-log
+
+Record events such as:
+
+Chapter claimed
+Chapter completed
+New RAW detected
+Project created
+
+---
+
+BOT ARCHITECTURE
+
+Organize code into modules.
+
+Example structure:
+
+src/
+commands/
+events/
+buttons/
+database/
+scrapers/
+services/
+utils/
+
+Key services:
+
+project manager
+chapter manager
+claim system
+raw scraper
+salary manager
+
+---
+
+ERROR HANDLING
+
+Handle errors such as:
+
+• scraper failures
+• missing permissions
+• invalid inputs
+
+---
+
+SETUP INSTRUCTIONS
+
+Include setup instructions:
+
+• install dependencies
+• configure environment variables
+• database setup
+• bot startup
+
+---
+
+FINAL GOAL
+
+Create a powerful Discord bot capable of running the entire workflow of a professional manhwa scanlation team without relying on external tools.
