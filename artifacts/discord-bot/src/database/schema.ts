@@ -20,9 +20,13 @@ export async function initDatabase() {
       chapter_rate DECIMAL(10,2) DEFAULT 0.50,
       payment_method VARCHAR(50),
       payment_info TEXT,
+      email VARCHAR(200),
+      birthday VARCHAR(10),
       total_chapters INTEGER DEFAULT 0,
       created_at TIMESTAMP DEFAULT NOW()
     );
+    ALTER TABLE members ADD COLUMN IF NOT EXISTS email VARCHAR(200);
+    ALTER TABLE members ADD COLUMN IF NOT EXISTS birthday VARCHAR(10);
 
     CREATE TABLE IF NOT EXISTS projects (
       id SERIAL PRIMARY KEY,
