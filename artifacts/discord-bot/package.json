@@ -1,0 +1,32 @@
+{
+  "name": "@workspace/discord-bot",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "deploy-commands": "tsx src/deploy-commands.ts"
+  },
+  "dependencies": {
+    "discord.js": "^14.21.0",
+    "puppeteer": "^24.15.0",
+    "cheerio": "^1.1.0",
+    "axios": "^1.10.0",
+    "googleapis": "^150.0.0",
+    "archiver": "^7.0.1",
+    "pg": "^8.20.0",
+    "drizzle-orm": "catalog:",
+    "zod": "catalog:",
+    "node-cron": "^4.2.1",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/pg": "^8.18.0",
+    "@types/archiver": "^6.0.3",
+    "@types/node-cron": "^3.0.11",
+    "tsx": "catalog:",
+    "typescript": "~5.9.2"
+  }
+}
