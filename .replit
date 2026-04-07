@@ -1,4 +1,4 @@
-modules = ["nodejs-24"]
+modules = ["nodejs-24", "python3"]
 
 [[artifacts]]
 id = "artifacts/api-server"
@@ -26,16 +26,31 @@ author = "agent"
 task = "workflow.run"
 args = "Discord Bot"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Manhwa RAW Tracker"
+
 [[workflows.workflow]]
 name = "Discord Bot"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "console"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "pnpm --filter @workspace/discord-bot run start"
+args = "echo 'Disabled - replaced by Manhwa RAW Tracker Python bot'"
+
+[[workflows.workflow]]
+name = "Manhwa RAW Tracker"
+author = "agent"
 
 [workflows.workflow.metadata]
 outputType = "console"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd artifacts/manhwa-tracker && /home/runner/workspace/.venv/bin/python main.py"
 
 [agent]
 stack = "PNPM_WORKSPACE"
@@ -44,3 +59,7 @@ expertMode = true
 [postMerge]
 path = "scripts/post-merge.sh"
 timeoutMs = 20000
+
+[nix]
+channel = "stable-25_05"
+packages = ["freetype", "lcms2", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "tcl", "tk", "xcodebuild", "zlib"]

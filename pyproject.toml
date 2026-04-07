@@ -1,0 +1,16 @@
+[project]
+name = "repl-nix-workspace"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "aiohttp>=3.13.5",
+    "beautifulsoup4>=4.14.3",
+    "cloudscraper>=1.2.71",
+    "discord-py>=2.7.1",
+    "google-api-python-client>=2.193.0",
+    "google-auth>=2.49.1",
+    "lxml>=6.0.2",
+    "pillow>=12.2.0",
+    "requests>=2.33.1",
+]

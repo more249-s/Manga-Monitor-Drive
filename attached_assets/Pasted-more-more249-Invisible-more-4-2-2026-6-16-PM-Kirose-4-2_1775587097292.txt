@@ -1,0 +1,206 @@
+more
+more249
+Invisible
+
+more — 4/2/2026 6:16 PM
+ليه 🫥
+Kirose — 4/2/2026 6:16 PM
+صعبة
+بايثون اسهل
+more — 4/2/2026 6:18 PM
+يب و تشغيلها اسهل و سرعتها افضل و احسن في التصليح
+Kirose — 4/2/2026 6:20 PM
+more — 4/2/2026 6:21 PM
+سمعت انها افضل لي دسكورد كنه لله شات جي بي تي الله ياخده
+Kirose — 4/2/2026 6:23 PM
+more — 4/2/2026 6:25 PM
+تسلم كتير برو و اسف جدا جدا ما كان قصدي و الله
+Kirose — 4/2/2026 6:26 PM
+more — 4/2/2026 6:27 PM
+والله احرجتني بي زوقك العالي
+Kirose — 4/2/2026 6:30 PM
+معملتش حاجة
+Kirose — 4/2/2026 8:12 PM
+@more 
+وش المواقع الي تبي خاصية السحب تشتغل عليهم؟
+وهل في سيرفر انت مشغل البوت عليه؟ اساسا هل هو بوت ديسكورد ولا محلي
+احا وش كل دي الملفات؟ انت بانيه ب google ai studio؟
+Kirose — 4/2/2026 8:43 PM
+>>
+more — 4/2/2026 8:44 PM
+كنت بشغله ع سيرفر
+Kirose — 4/2/2026 8:44 PM
+او مثلا تنسخ المشاكل من الكونسول هو بيكتب لك اي؟
+more — 4/2/2026 8:47 PM
+اقدر اديك ملف ال .evn تشغله انت ؟ لان وقفته من الاتضافه وقتلقيته ما يشتغل و كنت بستعمل ربلت و انتي غرافتي و كلود كمانو انا بعمل البوت
+Kirose — 4/2/2026 8:48 PM
+more — 4/2/2026 8:49 PM
+تكون سويت خير والله
+Kirose — 4/3/2026 7:33 AM
+غدا انشالله عشان انا مسافر واللاب بالبيت
+more — 4/3/2026 7:47 AM
+لي وقت ترجع بي السلامه يا صاحبي 🫀
+Kirose — Yesterday at 9:43 PM
+اخبارك يخويا
+# =======================================================
+# =================== قسم ميزة الرادار ===================
+# =======================================================
+
+# 1. دالة فحص الموقع (Scraper)
+async def fetch_latest_chapter(url: str, current_ch: float) -> Optional[float]:
+
+message.txt
+8 KB
+دي ميزة الرادار اديها ل ريبليت وقول له يقلدها للكود مالك
+more — 4:43 PM
+مشكور جدا 🫀
+Kirose — 5:19 PM
+هلا وغلا يخويا
+﻿
+# =======================================================
+# =================== قسم ميزة الرادار ===================
+# =======================================================
+
+# 1. دالة فحص الموقع (Scraper)
+async def fetch_latest_chapter(url: str, current_ch: float) -> Optional[float]:
+    def fetch_html():
+        try:
+            scraper = cloudscraper.create_scraper(
+                browser={'browser': 'chrome', 'platform': 'windows', 'desktop': True}
+            )
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Referer': 'https://google.com/',
+                'Accept-Language': 'en-US,en;q=0.9,ar;q=0.8'
+            }
+            response = scraper.get(url, headers=headers, timeout=20)
+            if response.status_code == 200:
+                return response.text
+        except Exception as e:
+            pass
+        return None
+
+    try:
+        loop = asyncio.get_event_loop()
+        html = await loop.run_in_executor(None, fetch_html)
+        
+        if not html: return None
+            
+        soup = BeautifulSoup(html, 'html.parser')
+        chapters = []
+        
+        for el in soup.find_all(['li', 'div', 'a', 'span']):
+            text = el.get_text(strip=True)
+            match = re.search(r'(?i)(?:الفصل|فصل|chapter|ch|ep)\s*[:\-]?\s*(\d+(?:\.\d+)?)', text)
+            if match:
+                chapters.append(float(match.group(1)))
+                
+        if chapters:
+            valid_chapters = [c for c in chapters if current_ch < c <= current_ch + 5]
+            if valid_chapters:
+                return max(valid_chapters)
+                
+        return None
+    except Exception as e:
+        print(f"Scraper error for {url}: {e}")
+        return None
+
+# 2. المحرك الدوري (The Loop)
+@tasks.loop(minutes=30)
+async def chapter_radar_loop():
+    await client.wait_until_ready() # إضافة مهمة لضمان أن البوت جاهز قبل بدء الفحص
+    now = datetime.datetime.now(datetime.timezone.utc)
+    trackers = db.get_all_trackers()
+    
+    if not trackers: # إذا لم يكن هناك أي شيء للمتابعة، لا داعي للطباعة
+        return
+
+    print(f"--- [الرادار] جاري بدء فحص {len(trackers)} أعمال الآن ---")
+    
+    for tracker_id, guild_id, channel_id, url, last_chapter, custom_msg, interval_hours, last_checked_str in trackers:
+        try:
+            last_checked = datetime.datetime.fromisoformat(last_checked_str)
+            if (now - last_checked) < datetime.timedelta(hours=interval_hours):
+                continue
+                
+            print(f"🔍 [الرادار] فحص: {url}")
+            
+            latest_chapter = await fetch_latest_chapter(url, last_chapter)
+            
+            if latest_chapter and latest_chapter > last_chapter:
+                print(f"✅ [الرادار] فصل جديد! {latest_chapter} (القديم: {last_chapter})")
+                channel = client.get_channel(channel_id)
+                if channel:
+                    embed = discord.Embed(
+                        title="🚨 فصل جديد متاح!", 
+                        description=f"تم العثور على **الفصل {latest_chapter}**\n\n[اضغط هنا للقراءة]({url})", 
+                        color=discord.Color.red()
+                    )
+                    embed.set_footer(text="تم إيقاف متابعة هذا العمل تلقائياً.")
+                    await channel.send(content=custom_msg, embed=embed)
+                    print(f"📢 [الرادار] تم إرسال التنبيه!")
+                
+                db.remove_tracker(tracker_id, guild_id)
+            else:
+                db.update_tracker_time(tracker_id, now.isoformat())
+                
+        except Exception as e:
+            print(f"❌ [الرادار] خطأ للآي دي {tracker_id}: {e}")
+
+
+# 3. الأوامر الإدارية للرادار
+@tree.command(name="track_add", description="[أدمن] إضافة عمل للمتابعة (رادار الفصول).")
+@app_commands.describe(
+    url="رابط العمل (المانجا/الويبتون).", 
+    channel="الروم التي سيتم إرسال الإشعار لها.", 
+    custom_message="الرسالة أو المنشن (مثال: @everyone فصل جديد!).", 
+    interval_hours="كل كم ساعة يتحقق البوت؟", 
+    current_chapter="رقم الفصل الحالي بالموقع الآن (مثال: 21)"
+)
+@is_admin()
+@app_commands.guild_only()
+async def track_add_command(interaction: discord.Interaction, url: str, channel: discord.TextChannel, custom_message: str, interval_hours: int, current_chapter: float):
+    if interval_hours < 1:
+        return await interaction.response.send_message("❌ أقل مدة للتحقق هي ساعة واحدة.", ephemeral=True)
+        
+    db.add_tracker(interaction.guild_id, channel.id, url, custom_message, interval_hours, current_chapter)
+    
+    await interaction.response.send_message(
+        f"✅ تم تفعيل الرادار بنجاح!\n"
+        f"تم تعيين الفصل الحالي يدوياً على **(الفصل {current_chapter})**.\n"
+        f"سيتم إرسال تنبيه في {channel.mention} بمجرد ظهور فصل جديد.", 
+        ephemeral=True
+    )
+
+@tree.command(name="track_list", description="[أدمن] عرض جميع الأعمال التي يتم متابعتها في السيرفر.")
+@is_admin()
+@app_commands.guild_only()
+async def track_list_command(interaction: discord.Interaction):
+    trackers = db.get_all_trackers()
+    guild_trackers = [t for t in trackers if t[1] == interaction.guild_id]
+    
+    if not guild_trackers:
+        return await interaction.response.send_message("لا يوجد أي أعمال قيد المتابعة في هذا السيرفر.", ephemeral=True)
+        
+    embed = discord.Embed(title="📡 قائمة الرادار (المتابعة)", color=discord.Color.blue())
+    description = ""
+    for t_id, g_id, c_id, url, last_ch, msg, interval, last_chk in guild_trackers:
+        channel = client.get_channel(c_id)
+        ch_name = channel.mention if channel else "روم محذوفة"
+        description += f"**ID: `{t_id}`**\n- **الروم:** {ch_name}\n- **آخر فصل:** {last_ch}\n- **الرابط:** [اضغط هنا]({url})\n\n"
+    
+    embed.description = description
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="track_remove", description="[أدمن] إزالة عمل من قائمة المتابعة باستخدام الـ ID الخاص به.")
+@app_commands.describe(tracker_id="رقم الـ ID (يمكنك معرفته من أمر track_list).")
+@is_admin()
+@app_commands.guild_only()
+async def track_remove_command(interaction: discord.Interaction, tracker_id: int):
+    success = db.remove_tracker(tracker_id, interaction.guild_id)
+    if success:
+        await interaction.response.send_message(f"✅ تمت إزالة الرادار رقم `{tracker_id}` بنجاح.", ephemeral=True)
+    else:
+        await interaction.response.send_message("❌ لم يتم العثور على هذا الـ ID في سيرفرك.", ephemeral=True)
+message.txt
+8 KB

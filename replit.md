@@ -2,7 +2,8 @@
 
 ## Overview
 
-pnpm workspace monorepo using TypeScript. Contains a full Discord bot for managing a manhwa scanlation team (Team X), with automated RAW tracking, Google Drive uploads, salary management, and chapter workflows.
+pnpm workspace monorepo (TypeScript) + Python Discord bot for manhwa RAW tracking.
+The active Discord bot is the **Python Manhwa RAW Tracker** (`artifacts/manhwa-tracker/`).
 
 ## Stack
 
@@ -11,69 +12,69 @@ pnpm workspace monorepo using TypeScript. Contains a full Discord bot for managi
 - **Package manager**: pnpm
 - **TypeScript version**: 5.9
 - **API framework**: Express 5
-- **Database**: PostgreSQL + Drizzle ORM
-- **Validation**: Zod (`zod/v4`), `drizzle-zod`
-- **API codegen**: Orval (from OpenAPI spec)
-- **Build**: esbuild (CJS bundle)
-- **Discord**: discord.js v14
-- **Scraping**: Cheerio + Axios + Puppeteer
-- **Storage**: Google Drive API (googleapis)
+- **Database**: PostgreSQL + Drizzle ORM (Node.js bot) / SQLite (Python bot)
+- **Discord (Python)**: discord.py v2
+- **Scraping**: cloudscraper (Cloudflare bypass) + BeautifulSoup4 + lxml
+- **Storage**: Google Drive API (google-api-python-client)
+- **Image stitching**: Pillow (14000px wide output)
 
 ## Structure
 
 ```text
 artifacts/
-├── api-server/         # Express API server
-├── discord-bot/        # Discord bot (Team X manager)
-│   └── src/
-│       ├── commands/   # /project /chapter /member /profile /salary /stats
-│       ├── scrapers/   # Asura, NewToki, Nirvana, Vortex, Flame, Reaper, Luminous, MangaDex, Generic
-│       ├── services/   # Google Drive, Salary, Dashboard
-│       ├── buttons/    # Claim button handler
-│       ├── events/     # RAW tracker (cron every 5 min)
-│       ├── database/   # PostgreSQL schema & init
-│       └── utils/      # Config, payment list
+├── api-server/           # Express API server
+├── discord-bot/          # TypeScript Discord bot (team management — inactive)
+├── manhwa-tracker/       # Python Discord bot (ACTIVE — RAW tracking)
+│   ├── main.py           # Bot entry point + all slash commands
+│   ├── scraper.py        # Multi-site scraper with Cloudflare bypass
+│   ├── downloader.py     # Chapter image downloader + SmartStitch-style stitcher
+│   ├── drive_upload.py   # Google Drive uploader
+│   ├── database.py       # SQLite DB for trackers + download logs
+│   └── requirements.txt  # Python dependencies
 lib/
-├── api-spec/           # OpenAPI spec + Orval codegen config
-├── api-client-react/   # Generated React Query hooks
-├── api-zod/            # Generated Zod schemas from OpenAPI
-└── db/                 # Drizzle ORM schema + DB connection
+├── api-spec/             # OpenAPI spec + Orval codegen
+├── api-client-react/     # Generated React Query hooks
+├── api-zod/              # Generated Zod schemas
+└── db/                   # Drizzle ORM schema
 ```
 
-## Discord Bot Features
+## Python Bot — Active Features
 
 ### Slash Commands
-- `/project create/remove/info/list/setsource` — Admin project management
-- `/chapter open/start/finish/status/download` — Chapter workflow
-- `/member add/remove/setrate/list` — Team member management
-- `/profile [user]` — View member stats & earnings
-- `/salary view/report/markpaid/paymentlist` — Salary management
-- `/stats` — Team & monthly statistics
+| Command | Description |
+|---|---|
+| `/track_add` | Add a manhwa to the radar (Cloudflare bypass, auto-detect site) |
+| `/track_list` | List all tracked works in this server |
+| `/track_remove` | Remove a work by ID |
+| `/track_download` | Manually download a chapter → stitch → upload to Drive |
+| `/track_check` | Immediately check for a new chapter (no waiting) |
+| `/track_sites` | Show all supported sites |
 
 ### Automation
-- RAW chapter tracker checks all sources every 5 minutes
-- Auto-downloads free chapters → zips → uploads to Google Drive
-- Sends Discord notifications when new RAW is detected
-- Claim timeout system (12 hours, then auto-release)
-- Dashboard auto-updates in project channels
+- **Radar loop**: checks tracked works every 30 minutes
+- **Cloudflare bypass**: cloudscraper with Chrome browser emulation
+- **Auto-download**: downloads images, stitches to 14000×N JPEG, zips, uploads to Google Drive
+- **Discord notifications**: embed with chapter number + Drive links
 
-### Supported RAW Sources
-Asura Scans, NewToki, Nirvana Scans, Vortex Scans, Flame Scans, Reaper Scans, Luminous Scans, MangaDex, and any generic manhwa site
+### Supported Sites (19+)
+Asura Scans, NewToki, Nirvana Scans, Vortex Scans, Flame Scans, Reaper Scans,
+Luminous Scans, MangaDex (official API), Bato.to, Manganelo, Mangakakalot,
+Webtoon, Toonily, Isekai Scan, Manhua Plus, Kun Manga, Hiperdex, Manga Buddy,
+Nitro Scans, and any generic site via universal regex extractor.
 
 ## Required Secrets
 - `DISCORD_BOT_TOKEN` — Bot token from Discord Developer Portal
 - `DISCORD_CLIENT_ID` — Application ID
-- `GOOGLE_DRIVE_FOLDER_ID` — Root folder ID for RAW uploads
+- `GOOGLE_DRIVE_FOLDER_ID` — Root folder for RAW uploads
 - `GOOGLE_SERVICE_ACCOUNT_JSON` — Google service account credentials JSON
-- `DATABASE_URL` — Auto-provided by Replit
+- `DATABASE_URL` — Auto-provided by Replit (PostgreSQL for Node.js bot)
 
-## Database Tables
-- `members` — Team member profiles, roles, rates
-- `projects` — Manhwa projects with source tracking
-- `chapters` — Chapter status, claims, drive links
-- `salary_records` — Monthly earnings per member/chapter
-- `tracked_sources` — URLs to monitor per project
-- `logs` — Event audit log
+## Python Packages (installed via uv)
+discord.py, cloudscraper, beautifulsoup4, lxml, requests, Pillow,
+google-auth, google-api-python-client, aiohttp, certifi
+Venv: `/home/runner/workspace/.venv`
 
-## Payment List
-Pre-loaded with ~100 manhwa titles and their rates from the team's payment sheet.
+## Workflows
+- **Manhwa RAW Tracker** (RUNNING): `cd artifacts/manhwa-tracker && /home/runner/workspace/.venv/bin/python main.py`
+- **Discord Bot** (disabled): TypeScript team management bot (same token, can't run simultaneously)
+- **API Server** (running): Express API
