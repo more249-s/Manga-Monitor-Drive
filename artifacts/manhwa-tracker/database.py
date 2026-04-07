@@ -10,6 +10,12 @@ def get_conn():
     return conn
 
 
+def _add_column_if_missing(conn, table, column, definition):
+    cols = [r[1] for r in conn.execute(f"PRAGMA table_info({table})").fetchall()]
+    if column not in cols:
+        conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
+
+
 def init_db():
     with get_conn() as conn:
         conn.executescript("""
@@ -24,8 +30,8 @@ def init_db():
                 custom_msg TEXT DEFAULT '',
                 interval_hours INTEGER NOT NULL DEFAULT 6,
                 last_checked TEXT NOT NULL DEFAULT '2000-01-01T00:00:00',
-                last_notification TEXT,
-                last_result TEXT,
+                last_notified_chapter REAL DEFAULT -1,
+                last_result TEXT DEFAULT '',
                 notify_user_id INTEGER,
                 auto_download INTEGER DEFAULT 0,
                 drive_folder_id TEXT DEFAULT ''
@@ -40,8 +46,9 @@ def init_db():
                 created_at TEXT DEFAULT (datetime('now'))
             );
         """)
-        conn.execute("ALTER TABLE trackers ADD COLUMN last_notification TEXT")
-        conn.execute("ALTER TABLE trackers ADD COLUMN last_result TEXT")
+        # Safe migrations for existing DBs
+        _add_column_if_missing(conn, "trackers", "last_notified_chapter", "REAL DEFAULT -1")
+        _add_column_if_missing(conn, "trackers", "last_result", "TEXT DEFAULT ''")
     print("[DB] Database initialized.")
 
 
@@ -53,11 +60,11 @@ def add_tracker(guild_id, channel_id, url, site_name, manga_title,
             """INSERT INTO trackers
                (guild_id, channel_id, url, site_name, manga_title,
                 last_chapter, custom_msg, interval_hours, last_checked,
-                notify_user_id, auto_download, drive_folder_id)
-               VALUES (?,?,?,?,?,?,?,?,datetime('now'),?,?,?)""",
+                last_notified_chapter, notify_user_id, auto_download, drive_folder_id)
+               VALUES (?,?,?,?,?,?,?,?,datetime('now'),?,?,?,?)""",
             (guild_id, channel_id, url, site_name, manga_title,
              current_chapter, custom_msg, interval_hours,
-             notify_user_id, auto_download, drive_folder_id),
+             current_chapter, notify_user_id, auto_download, drive_folder_id),
         )
 
 
@@ -90,28 +97,30 @@ def remove_tracker(tracker_id, guild_id) -> bool:
 def update_tracker_chapter(tracker_id, new_chapter):
     with get_conn() as conn:
         conn.execute(
-            "UPDATE trackers SET last_chapter = ?, last_checked = datetime('now') WHERE id = ?",
-            (new_chapter, tracker_id),
+            """UPDATE trackers
+               SET last_chapter = ?, last_notified_chapter = ?,
+                   last_checked = datetime('now'), last_result = 'notified'
+               WHERE id = ?""",
+            (new_chapter, new_chapter, tracker_id),
         )
 
 
-def update_tracker_status(tracker_id, last_checked=None, last_notification=None, last_result=None):
-    parts = []
-    values = []
-    if last_checked is not None:
-        parts.append("last_checked = ?")
-        values.append(last_checked)
-    if last_notification is not None:
-        parts.append("last_notification = ?")
-        values.append(last_notification)
-    if last_result is not None:
-        parts.append("last_result = ?")
-        values.append(last_result)
-    if not parts:
-        return
-    values.append(tracker_id)
+def update_tracker_time(tracker_id, result="checked"):
     with get_conn() as conn:
-        conn.execute(f"UPDATE trackers SET {', '.join(parts)} WHERE id = ?", values)
+        conn.execute(
+            "UPDATE trackers SET last_checked = datetime('now'), last_result = ? WHERE id = ?",
+            (result, tracker_id),
+        )
+
+
+def was_already_notified(tracker_id, chapter) -> bool:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT last_notified_chapter FROM trackers WHERE id = ?", (tracker_id,)
+        ).fetchone()
+        if row:
+            return float(row["last_notified_chapter"] or -1) >= float(chapter)
+    return False
 
 
 def log_download(tracker_id, chapter, status="pending", drive_link=""):
@@ -119,12 +128,4 @@ def log_download(tracker_id, chapter, status="pending", drive_link=""):
         conn.execute(
             "INSERT INTO downloads (tracker_id, chapter, status, drive_link) VALUES (?,?,?,?)",
             (tracker_id, chapter, status, drive_link),
-        )
-
-
-def update_download_status(tracker_id, chapter, status, drive_link=""):
-    with get_conn() as conn:
-        conn.execute(
-            "UPDATE downloads SET status=?, drive_link=? WHERE tracker_id=? AND chapter=?",
-            (status, drive_link, tracker_id, chapter),
         )
