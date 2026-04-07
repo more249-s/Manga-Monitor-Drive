@@ -1,6 +1,5 @@
 import sqlite3
 import os
-from typing import Optional
 
 DB_PATH = os.environ.get("TRACKER_DB", "tracker.db")
 
@@ -25,6 +24,8 @@ def init_db():
                 custom_msg TEXT DEFAULT '',
                 interval_hours INTEGER NOT NULL DEFAULT 6,
                 last_checked TEXT NOT NULL DEFAULT '2000-01-01T00:00:00',
+                last_notification TEXT,
+                last_result TEXT,
                 notify_user_id INTEGER,
                 auto_download INTEGER DEFAULT 0,
                 drive_folder_id TEXT DEFAULT ''
@@ -39,6 +40,8 @@ def init_db():
                 created_at TEXT DEFAULT (datetime('now'))
             );
         """)
+        conn.execute("ALTER TABLE trackers ADD COLUMN last_notification TEXT")
+        conn.execute("ALTER TABLE trackers ADD COLUMN last_result TEXT")
     print("[DB] Database initialized.")
 
 
@@ -70,6 +73,11 @@ def get_guild_trackers(guild_id):
         ).fetchall()
 
 
+def get_tracker(tracker_id):
+    with get_conn() as conn:
+        return conn.execute("SELECT * FROM trackers WHERE id = ?", (tracker_id,)).fetchone()
+
+
 def remove_tracker(tracker_id, guild_id) -> bool:
     with get_conn() as conn:
         cur = conn.execute(
@@ -87,12 +95,23 @@ def update_tracker_chapter(tracker_id, new_chapter):
         )
 
 
-def update_tracker_time(tracker_id):
+def update_tracker_status(tracker_id, last_checked=None, last_notification=None, last_result=None):
+    parts = []
+    values = []
+    if last_checked is not None:
+        parts.append("last_checked = ?")
+        values.append(last_checked)
+    if last_notification is not None:
+        parts.append("last_notification = ?")
+        values.append(last_notification)
+    if last_result is not None:
+        parts.append("last_result = ?")
+        values.append(last_result)
+    if not parts:
+        return
+    values.append(tracker_id)
     with get_conn() as conn:
-        conn.execute(
-            "UPDATE trackers SET last_checked = datetime('now') WHERE id = ?",
-            (tracker_id,),
-        )
+        conn.execute(f"UPDATE trackers SET {', '.join(parts)} WHERE id = ?", values)
 
 
 def log_download(tracker_id, chapter, status="pending", drive_link=""):
