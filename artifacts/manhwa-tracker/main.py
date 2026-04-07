@@ -582,6 +582,79 @@ def _register_commands(tree: app_commands.CommandTree, bot: ManhwaBot):
             print(f"[DL cmd] {e}")
             await interaction.followup.send(f"❌ خطأ: {e}", ephemeral=True)
 
+    # ── download (no tracker ID needed) ───────────────────────
+    @tree.command(name="download", description="حمّل فصل مباشرة من رابطه بدون إضافته للرادار")
+    @app_commands.describe(
+        chapter_url="رابط صفحة الفصل مباشرة",
+        manga_title="اسم العمل (يظهر في اسم الملف)",
+        chapter_number="رقم الفصل (اختياري، للتسمية فقط)",
+        stitch="دمج الصور في صورة واحدة طويلة 14000px؟",
+    )
+    @is_admin()
+    @app_commands.guild_only()
+    async def download_direct(
+        interaction: discord.Interaction,
+        chapter_url: str,
+        manga_title: str,
+        chapter_number: Optional[float] = None,
+        stitch: bool = True,
+    ):
+        await interaction.response.defer(ephemeral=True)
+
+        status_msg = await interaction.followup.send(
+            f"⏳ جاري جلب الصور من الرابط…", ephemeral=True, wait=True
+        )
+
+        try:
+            site = scraper._detect_site(chapter_url)
+            image_urls = await scraper.get_chapter_image_urls(chapter_url, site)
+
+            if not image_urls:
+                await status_msg.edit(content="❌ لم يُعثر على صور في هذا الرابط. تأكد أن الرابط يفتح على صفحة الفصل مباشرة.")
+                return
+
+            await status_msg.edit(content=f"📥 وُجد **{len(image_urls)}** صورة — جاري التحميل والدمج…")
+
+            ch_label = chapter_number if chapter_number is not None else 0.0
+            result = await downloader.process_chapter(
+                image_urls, manga_title, ch_label, referer=chapter_url, stitch=stitch
+            )
+
+            if not ROOT_FOLDER_ID:
+                await status_msg.edit(content="❌ لم يتم ضبط Google Drive Folder ID في المتغيرات البيئية.")
+                return
+
+            await status_msg.edit(content="☁️ جاري الرفع على Google Drive…")
+
+            drive_result = await asyncio.get_event_loop().run_in_executor(
+                None,
+                drive_upload.upload_chapter,
+                result["zip"], result["stitched"] if stitch else None,
+                manga_title, ch_label, ROOT_FOLDER_ID,
+            )
+
+            zip_url = drive_result.get("zip_url", "")
+            stitched_url = drive_result.get("stitched_url", "")
+
+            embed = discord.Embed(
+                title=f"✅ اكتمل التحميل — {manga_title}" + (f" ف{ch_label:g}" if ch_label else ""),
+                color=discord.Color.green(),
+            )
+            embed.add_field(name="الموقع", value=site, inline=True)
+            embed.add_field(name="عدد الصور", value=str(result["count"]), inline=True)
+            if stitch:
+                embed.add_field(name="العرض", value="14000px", inline=True)
+            if zip_url:
+                embed.add_field(name="📦 ZIP", value=f"[فتح الملف]({zip_url})", inline=False)
+            if stitched_url:
+                embed.add_field(name="🖼️ صورة مدمجة", value=f"[فتح الصورة]({stitched_url})", inline=False)
+
+            await status_msg.edit(content=None, embed=embed)
+
+        except Exception as e:
+            print(f"[/download] Error: {e}")
+            await status_msg.edit(content=f"❌ خطأ: {e}")
+
     # ── track_stats ────────────────────────────────────────────
     @tree.command(name="track_stats", description="إحصائيات الرادار لهذا السيرفر")
     @app_commands.guild_only()
