@@ -31,6 +31,8 @@ import drive_upload
 
 TOKEN = os.environ.get("DISCORD_BOT_TOKEN", "")
 ROOT_FOLDER_ID = os.environ.get("GOOGLE_DRIVE_FOLDER_ID", "")
+GUILD_ID = 1219426192076312616  # السيرفر الرئيسي
+TARGET_GUILD = discord.Object(id=GUILD_ID)
 
 SUPPORTED_SITES = [
     ("Asura Scans", "asuracomic.net"),
@@ -131,8 +133,10 @@ class ManhwaBot(discord.Client):
     async def setup_hook(self):
         db.init_db()
         _register_commands(self.tree, self)
-        await self.tree.sync()
-        print("[Bot] Slash commands synced globally.")
+        # Copy commands to the main guild for instant availability
+        self.tree.copy_global_to(guild=TARGET_GUILD)
+        await self.tree.sync(guild=TARGET_GUILD)
+        print(f"[Bot] Commands synced to guild {GUILD_ID}.")
         self.radar_loop.start()
 
     async def on_ready(self):
